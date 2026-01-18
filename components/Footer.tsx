@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -7,7 +8,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* 병원 정보 */}
           <div>
-            <h3 className="text-xl font-bold mb-4">메디모아의원</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <Image
+                src="/images/logo/medimoa-logo.png"
+                alt="메디모아의원"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+              <h3 className="text-xl font-bold">메디모아의원</h3>
+            </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               아이들의 건강한 성장을 돕는<br />
               소아청소년과 전문 의료기관

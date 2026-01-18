@@ -25,7 +25,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-50 to-blue-50 py-20">
+      <section className="relative bg-gradient-to-r from-blue-50 to-sky-50 py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -39,13 +39,13 @@ export default function HomePage() {
             <div className="flex space-x-4">
               <Link
                 href="/services"
-                className="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors"
+                className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
               >
                 진료 안내
               </Link>
               <Link
                 href="/about"
-                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold border-2 border-green-500 hover:bg-green-50 transition-colors"
+                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-500 hover:bg-blue-50 transition-colors"
               >
                 병원 소개
               </Link>
@@ -85,7 +85,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-gray-900">공지사항</h2>
             <Link
               href="/notices"
-              className="text-green-600 hover:text-green-700 font-semibold"
+              className="text-blue-600 hover:text-blue-700 font-semibold"
             >
               더보기 →
             </Link>
