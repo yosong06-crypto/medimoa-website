@@ -6,19 +6,19 @@ export default function HomePage() {
       title: '성조숙증 클리닉',
       description: '아이의 조기 성장 발달을 전문적으로 진단하고 관리합니다.',
       icon: '🌱',
-      href: '/services#precocious-puberty',
+      href: '/services/precocious',
     },
     {
       title: '저신장 클리닉',
       description: '아이의 성장 호르몬 검사와 성장 클리닉을 운영합니다.',
       icon: '📏',
-      href: '/services#short-stature',
+      href: '/services/growth',
     },
     {
       title: '아동발달센터',
       description: '아이의 발달 상태를 체계적으로 평가하고 지원합니다.',
       icon: '🧸',
-      href: '/services#development',
+      href: '/services/development',
     },
   ]
 
