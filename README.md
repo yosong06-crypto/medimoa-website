@@ -1,36 +1,204 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 메디모아의원 웹사이트
 
-## Getting Started
+소아청소년과 전문 의료기관 메디모아의원의 공식 웹사이트입니다.
 
-First, run the development server:
+## 📌 프로젝트 개요
+
+- **프로젝트명**: medimoa-website
+- **목표**: 소아청소년과 전문 의료기관의 정보 제공 및 공지사항 관리
+- **기술 스택**: Next.js 14, TypeScript, Tailwind CSS, Prisma ORM, SQLite
+
+## 🌐 URL
+
+- **개발 서버**: https://3000-inacp8ne75sqxl6ovdddb-2e1b9533.sandbox.novita.ai
+- **GitHub**: (추후 추가 예정)
+
+## ✨ 주요 기능
+
+### 완료된 기능
+
+1. **메인 페이지**
+   - 히어로 섹션
+   - 주요 진료 소개 (3개 카드)
+   - 공지사항 최신 3개 표시
+
+2. **병원 소개 페이지**
+   - 원장 인사말
+   - 병원 철학 (4가지 핵심 가치)
+   - 시설 안내 (위치, 교통, 주차, 시설)
+
+3. **의료진 소개 페이지**
+   - 대표원장 프로필
+   - 학력 및 경력
+   - 전문 진료 분야
+
+4. **진료 안내 페이지**
+   - 성조숙증 클리닉
+   - 저신장 클리닉
+   - 아동발달센터
+
+5. **공지사항 페이지**
+   - 게시판 형태 목록
+   - 페이지네이션 UI
+
+6. **관리자 페이지**
+   - 로그인 페이지
+   - 관리자 대시보드
+   - 공지사항 관리 (목록, 작성, 수정, 삭제)
+
+### 구현 예정 기능
+
+1. **NextAuth.js 인증**
+   - 관리자 로그인 기능
+   - 세션 관리
+   - 보호된 라우트
+
+2. **공지사항 CRUD**
+   - 데이터베이스 연동
+   - 이미지 업로드
+   - 실제 CRUD 기능 구현
+
+3. **페이지네이션**
+   - 실제 동작하는 페이지네이션
+   - 검색 기능
+
+## 🗄️ 데이터베이스 구조
+
+### Admin (관리자)
+```prisma
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+### Notice (공지사항)
+```prisma
+model Notice {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  images    String?  // JSON array of image URLs
+  views     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+## 🎨 디자인 시스템
+
+- **색상 팔레트**
+  - Primary: 연한 민트 (#86efac)
+  - Secondary: 연한 블루 (#93c5fd)
+  - Accent: 골드 (#fbbf24)
+  - Background: 화이트 (#ffffff)
+  - Foreground: 다크 그레이 (#1f2937)
+
+- **폰트**: Geist Sans, Geist Mono (Google Fonts)
+- **반응형**: 모바일, 태블릿, 데스크톱 지원
+
+## 📁 프로젝트 구조
+
+```
+medimoa-website/
+├── app/                    # Next.js App Router
+│   ├── about/             # 병원 소개
+│   ├── doctors/           # 의료진 소개
+│   ├── services/          # 진료 안내
+│   ├── notices/           # 공지사항
+│   ├── admin/             # 관리자 페이지
+│   │   ├── login/         # 로그인
+│   │   └── notices/       # 공지사항 관리
+│   ├── layout.tsx         # 루트 레이아웃
+│   └── page.tsx           # 메인 페이지
+├── components/            # 공통 컴포넌트
+│   ├── Header.tsx         # 헤더
+│   └── Footer.tsx         # 푸터
+├── lib/                   # 유틸리티 함수
+│   └── prisma.ts          # Prisma 클라이언트
+├── prisma/                # 데이터베이스 스키마
+│   └── schema.prisma      # Prisma 스키마
+└── public/                # 정적 파일
+    └── uploads/           # 업로드 이미지
+```
+
+## 🚀 시작하기
+
+### 설치
+
+```bash
+npm install
+```
+
+### 데이터베이스 마이그레이션
+
+```bash
+npx prisma migrate dev
+```
+
+### 개발 서버 실행
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 빌드
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔒 환경 변수
 
-## Learn More
+```env
+DATABASE_URL="file:./dev.db"
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 👤 테스트 계정
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **이메일**: admin@medimoa.com
+- **비밀번호**: admin1234
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 추천 다음 단계
 
-## Deploy on Vercel
+1. **NextAuth.js 통합**
+   - 실제 인증 로직 구현
+   - 세션 기반 접근 제어
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **공지사항 API 구현**
+   - API 라우트 생성
+   - CRUD 기능 구현
+   - 이미지 업로드 처리
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **관리자 계정 시드 데이터**
+   - 초기 관리자 계정 생성
+   - 샘플 공지사항 데이터
+
+4. **SEO 최적화**
+   - 메타 태그 추가
+   - sitemap.xml 생성
+   - robots.txt 추가
+
+5. **배포**
+   - Vercel 또는 다른 플랫폼에 배포
+   - 프로덕션 데이터베이스 설정
+
+## 📄 라이선스
+
+© 2024 메디모아의원. All rights reserved.
+
+## 🤝 기여
+
+프로젝트 개선을 위한 제안이나 버그 리포트는 언제든 환영합니다.
+
+---
+
+**개발 상태**: 기본 구조 및 라우팅 완료 ✅  
+**마지막 업데이트**: 2024-01-18
