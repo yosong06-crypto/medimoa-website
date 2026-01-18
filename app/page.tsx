@@ -1,65 +1,137 @@
-import Image from "next/image";
+import Link from 'next/link'
 
-export default function Home() {
+export default function HomePage() {
+  const services = [
+    {
+      title: '성조숙증 클리닉',
+      description: '아이의 조기 성장 발달을 전문적으로 진단하고 관리합니다.',
+      icon: '🌱',
+      href: '/services#precocious-puberty',
+    },
+    {
+      title: '저신장 클리닉',
+      description: '아이의 성장 호르몬 검사와 성장 클리닉을 운영합니다.',
+      icon: '📏',
+      href: '/services#short-stature',
+    },
+    {
+      title: '아동발달센터',
+      description: '아이의 발달 상태를 체계적으로 평가하고 지원합니다.',
+      icon: '🧸',
+      href: '/services#development',
+    },
+  ]
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-green-50 to-blue-50 py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              아이들의 건강한 성장을<br />
+              함께 지켜갑니다
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              메디모아의원은 소아청소년과 전문의가 아이들의 성장과 발달을<br />
+              세심하게 관리하고 치료하는 전문 의료기관입니다.
+            </p>
+            <div className="flex space-x-4">
+              <Link
+                href="/services"
+                className="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors"
+              >
+                진료 안내
+              </Link>
+              <Link
+                href="/about"
+                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold border-2 border-green-500 hover:bg-green-50 transition-colors"
+              >
+                병원 소개
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">주요 진료 과목</h2>
+            <p className="text-gray-600">전문적이고 세심한 진료를 제공합니다</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
+              >
+                <div className="text-5xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </Link>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Notice Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">공지사항</h2>
+            <Link
+              href="/notices"
+              className="text-green-600 hover:text-green-700 font-semibold"
+            >
+              더보기 →
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <div className="divide-y">
+              <div className="p-6 hover:bg-gray-50 transition-colors">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    메디모아의원 개원 안내
+                  </h3>
+                  <span className="text-sm text-gray-500">2024.01.15</span>
+                </div>
+                <p className="text-gray-600">
+                  아이들의 건강한 성장을 위해 메디모아의원이 개원하였습니다.
+                </p>
+              </div>
+
+              <div className="p-6 hover:bg-gray-50 transition-colors">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    연말연시 휴진 안내
+                  </h3>
+                  <span className="text-sm text-gray-500">2024.01.10</span>
+                </div>
+                <p className="text-gray-600">
+                  12월 31일부터 1월 2일까지 휴진합니다.
+                </p>
+              </div>
+
+              <div className="p-6 hover:bg-gray-50 transition-colors">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    독감 예방접종 실시
+                  </h3>
+                  <span className="text-sm text-gray-500">2024.01.05</span>
+                </div>
+                <p className="text-gray-600">
+                  독감 예방접종을 실시하고 있습니다. 사전 예약 바랍니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
