@@ -11,7 +11,7 @@
 ## 🌐 URL
 
 - **개발 서버**: https://3000-inacp8ne75sqxl6ovdddb-2e1b9533.sandbox.novita.ai
-- **GitHub**: (추후 추가 예정)
+- **GitHub**: https://github.com/yosong06-crypto/medimoa-website
 
 ## ✨ 주요 기능
 
